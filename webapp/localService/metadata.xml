@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZUI_ODATA_SRV" xml:lang="zh" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="code" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ReturnCode"/>
+                    <PropertyRef Name="Code"/>
+                    <PropertyRef Name="ReturnMessage"/>
+                </Key>
+                <Property Name="ReturnCode" Type="Edm.Int32" Nullable="false" sap:unicode="false" sap:label="RETURN_CODE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Code" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="CODE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ReturnMessage" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="RETURN_MESSAGE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="np_expand" Relationship="ZUI_ODATA_SRV.np_expand" FromRole="FromRole_np_expand" ToRole="ToRole_np_expand"/>
+            </EntityType>
+            <EntityType Name="expand" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Input"/>
+                    <PropertyRef Name="Output"/>
+                </Key>
+                <Property Name="Input" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="INPUT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Output" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="OUTPUT" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="np_expand" Relationship="ZUI_ODATA_SRV.np_expand" FromRole="ToRole_np_expand" ToRole="FromRole_np_expand"/>
+            </EntityType>
+            <EntityType Name="ZshT005" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Land1"/>
+                    <PropertyRef Name="Landx"/>
+                </Key>
+                <Property Name="Land1" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="国家/地区" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Landx" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="名称" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="np_expand" sap:content-version="1">
+                <End Type="ZUI_ODATA_SRV.code" Multiplicity="1" Role="FromRole_np_expand"/>
+                <End Type="ZUI_ODATA_SRV.expand" Multiplicity="*" Role="ToRole_np_expand"/>
+            </Association>
+            <EntityContainer Name="ZUI_ODATA_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="codeSet" EntityType="ZUI_ODATA_SRV.code" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="expandCollection" EntityType="ZUI_ODATA_SRV.expand" sap:content-version="1"/>
+                <EntitySet Name="ZshT005Set" EntityType="ZUI_ODATA_SRV.ZshT005" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="np_expand_AssocSet" Association="ZUI_ODATA_SRV.np_expand" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="codeSet" Role="FromRole_np_expand"/>
+                    <End EntitySet="expandCollection" Role="ToRole_np_expand"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://101.231.252.105:8030/sap/opu/odata/SAP/ZUI_ODATA_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://101.231.252.105:8030/sap/opu/odata/SAP/ZUI_ODATA_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

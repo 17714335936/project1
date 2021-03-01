@@ -1,0 +1,155 @@
+{
+	"_version": "1.1.0",
+	"sap.app": {
+		"id": "project1",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponent",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"ZUI_ODATA_SRV": {
+				"uri": "/sap/opu/odata/sap/ZUI_ODATA_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/ZUI_ODATA_SRV/metadata.xml"
+				}
+			}
+		},
+		"_version": "1.3.0"
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"_version": "1.3.0",
+		"supportedThemes": []
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "project1.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "project1.i18n.i18n"
+				}
+			},
+			"OData": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"useBatch": false,
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneTime",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZUI_ODATA_SRV",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "project1.view",
+				"controlId": "App",
+				"controlAggregation": "pages",
+				"async": true,
+				"transition": "slide",
+				"bypassed": {
+					"target": [
+						"StockSearch_INIT"
+					]
+				}
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "StockSearch_INIT",
+					"greedy": false,
+					"titleTarget": "",
+					"target": [
+						"StockSearch_INIT"
+					]
+				},
+				{
+					"pattern": "StockSearch_LIST",
+					"name": "StockSearch_LIST",
+					"greedy": false,
+					"titleTarget": "",
+					"target": [
+						"StockSearch_LIST"
+					]
+				}
+			],
+			"targets": {
+				"StockSearch_INIT": {
+					"viewName": "StockSearch_INIT",
+					"viewLevel": 1,
+					"controlAggregation": "pages",
+					"clearControlAggregation": true
+				},
+				"StockSearch_LIST": {
+					"viewName": "StockSearch_LIST",
+					"viewLevel": 1,
+					"controlAggregation": "pages",
+					"clearControlAggregation": true
+				}
+			},
+			"OData": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"useBatch": false,
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneTime",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "ZUI_ODATA_SRV",
+				"preload": true
+			}
+		},
+		"_version": "1.2.0"
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zstocksearch/webapp",
+		"_version": "1.1.0"
+	}
+}

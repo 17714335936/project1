@@ -1,0 +1,256 @@
+<mvc:View xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+	controllerName="com.myApp.StockSearch.controller.StockSearch_LIST" xmlns="sap.m" xmlns:layout="sap.ui.layout">
+	<Page title="" titleAlignment="Center" titleLevel="H3" showNavButton="true" navButtonPress="Back">
+		<SearchField value="{globalProperties>/ZBARCODE2}" id="searchField" search="onSearchZBARCODE" placeholder="请扫描物料条码" width="100%"/>
+		<FlexBox renderType="Div" visible="{= ${globalProperties>/VISABLE} === 'X' }">
+			<items>
+				<Text text="条码号:">
+					<layoutData>
+						<FlexItemData alignSelf="Center" baseSize="20%"/>
+					</layoutData>
+				</Text>
+				<Input value="{globalProperties>/ZBARCODE}" editable="false" textAlign="Begin" placeholder="">
+					<layoutData>
+						<FlexItemData alignSelf="End" baseSize="100%"/>
+					</layoutData>
+				</Input>
+			</items>
+		</FlexBox>
+		<FlexBox renderType="Div" visible="{= ${globalProperties>/VISABLE} === 'X' }">
+			<items>
+				<Text text="条码状态:">
+					<layoutData>
+						<FlexItemData alignSelf="Center" baseSize="20%"/>
+					</layoutData>
+				</Text>
+				<Input value="{globalProperties>/ZSTATUS}-{globalProperties>/NAME1}" editable="false" textAlign="Begin" placeholder="">
+					<layoutData>
+						<FlexItemData alignSelf="End" baseSize="100%"/>
+					</layoutData>
+				</Input>
+			</items>
+		</FlexBox>
+		<FlexBox renderType="Div">
+			<items>
+				<Text text="物料:">
+					<layoutData>
+						<FlexItemData alignSelf="Center" baseSize="20%"/>
+					</layoutData>
+				</Text>
+				<Input value="{path:'globalProperties>/MATNR',formatter:'.formatter.deleteLeftZero'}" editable="false" textAlign="Begin" placeholder="">
+					<layoutData>
+						<FlexItemData alignSelf="End" baseSize="100%"/>
+					</layoutData>
+				</Input>
+			</items>
+		</FlexBox>
+		<FlexBox renderType="Div">
+			<items>
+				<Text text="物料描述:">
+					<layoutData>
+						<FlexItemData alignSelf="Center" baseSize="20%"/>
+					</layoutData>
+				</Text>
+				<Input value="{globalProperties>/MAKTX}" editable="false" textAlign="Begin" placeholder="">
+					<layoutData>
+						<FlexItemData alignSelf="End" baseSize="100%"/>
+					</layoutData>
+				</Input>
+			</items>
+		</FlexBox>
+		<FlexBox renderType="Div" visible="{= ${globalProperties>/VISABLE} === 'X' }">
+			<items>
+				<Text text="批次:">
+					<layoutData>
+						<FlexItemData alignSelf="Center" baseSize="20%"/>
+					</layoutData>
+				</Text>
+				<Input value="{globalProperties>/CHARG}" editable="false" textAlign="Begin" placeholder="">
+					<layoutData>
+						<FlexItemData alignSelf="End" baseSize="100%"/>
+					</layoutData>
+				</Input>
+			</items>
+		</FlexBox>
+		<FlexBox renderType="Div" visible="{= ${globalProperties>/VISABLE} === 'X' }">
+			<items>
+				<Text text="货位:">
+					<layoutData>
+						<FlexItemData alignSelf="Center" baseSize="20%"/>
+					</layoutData>
+				</Text>
+				<Input value="{globalProperties>/LGPLA}" editable="false" textAlign="Begin" placeholder="">
+					<layoutData>
+						<FlexItemData alignSelf="End" baseSize="100%"/>
+					</layoutData>
+				</Input>
+			</items>
+		</FlexBox>
+		<FlexBox renderType="Div" visible="{= ${globalProperties>/VISABLE} === 'X' }">
+			<items>
+				<Text text="包装数量:">
+					<layoutData>
+						<FlexItemData alignSelf="Center" baseSize="20%"/>
+					</layoutData>
+				</Text>
+				<Input value="{globalProperties>/MENGE2}" editable="false" textAlign="Begin" placeholder="">
+					<layoutData>
+						<FlexItemData alignSelf="End" baseSize="100%"/>
+					</layoutData>
+				</Input>
+			</items>
+		</FlexBox>
+		<FlexBox renderType="Div">
+			<items>
+				<Text text="总数:">
+					<layoutData>
+						<FlexItemData alignSelf="Center" baseSize="20%"/>
+					</layoutData>
+				</Text>
+				<Input value="{globalProperties>/ZS}{globalProperties>/MEINS_O}" editable="false" textAlign="Begin" placeholder="">
+					<layoutData>
+						<FlexItemData alignSelf="End" baseSize="100%"/>
+					</layoutData>
+				</Input>
+			</items>
+		</FlexBox>
+		<Table items="{globalProperties>/TABLE_TAB}" visible="{= ${globalProperties>/VISABLE} === 'X' }">
+			<columns>
+				<Column width="15%">
+					<CustomListItem>
+						<FlexBox justifyContent="Start">
+							<Text text="序号"/>
+						</FlexBox>
+					</CustomListItem>
+				</Column>
+				<Column width="30%">
+					<CustomListItem>
+						<FlexBox justifyContent="Start">
+							<Text text="库存地点"/>
+						</FlexBox>
+					</CustomListItem>
+				</Column>
+				<Column width="30%">
+					<CustomListItem>
+						<FlexBox justifyContent="Start">
+							<Text text="特殊库存"/>
+						</FlexBox>
+						<FlexBox justifyContent="Start">
+							<Text text="编码"/>
+						</FlexBox>
+					</CustomListItem>
+				</Column>
+				<Column width="25%">
+					<CustomListItem>
+						<FlexBox justifyContent="Start">
+							<Text text="库存数量"/>
+						</FlexBox>
+					</CustomListItem>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem type="Active">
+					<cells>
+						<CustomListItem>
+							<FlexBox justifyContent="Start">
+								<Label text="{globalProperties>NO}"/>
+							</FlexBox>
+						</CustomListItem>
+						<CustomListItem>
+							<FlexBox justifyContent="Start">
+								<Label text="{globalProperties>LGORT}"/>
+							</FlexBox>
+						</CustomListItem>
+						<CustomListItem>
+							<FlexBox justifyContent="Start">
+								<Text text="{globalProperties>SOBKZ}"/>
+							</FlexBox>
+							<FlexBox justifyContent="Start">
+								<Text text="{path:'globalProperties>SONUM',formatter:'.formatter.deleteLeftZero'}"/>
+							</FlexBox>
+						</CustomListItem>
+						<CustomListItem justifyContent="Start">
+							<Text text="{globalProperties>KYSL}"/>
+						</CustomListItem>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<Table items="{globalProperties>/TABLE_TAB}" visible="{= ${globalProperties>/VISABLE} === '' }">
+			<columns>
+				<Column width="15%">
+					<CustomListItem>
+						<FlexBox justifyContent="Start">
+							<Text text="序号"/>
+						</FlexBox>
+					</CustomListItem>
+				</Column>
+				<Column width="25%">
+					<CustomListItem>
+						<FlexBox justifyContent="Start">
+							<Text text="仓位"/>
+						</FlexBox>
+						<FlexBox justifyContent="Start">
+							<Text text="库存数量"/>
+						</FlexBox>
+					</CustomListItem>
+				</Column>
+				<Column width="30%">
+					<CustomListItem>
+						<FlexBox justifyContent="Start">
+							<Text text="库存地点"/>
+						</FlexBox>
+						<FlexBox justifyContent="Start">
+							<Text text="批号"/>
+						</FlexBox>
+					</CustomListItem>
+				</Column>
+				<Column width="30%">
+					<CustomListItem>
+						<FlexBox justifyContent="Start">
+							<Text text="特殊库存"/>
+						</FlexBox>
+						<FlexBox justifyContent="Start">
+							<Text text="编码"/>
+						</FlexBox>
+					</CustomListItem>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem type="Active">
+					<cells>
+						<CustomListItem>
+							<FlexBox justifyContent="Start">
+								<Label text="{globalProperties>NO}"/>
+							</FlexBox>
+						</CustomListItem>
+						<CustomListItem>
+							<FlexBox justifyContent="Start">
+								<Text text="{globalProperties>LGPLA}"/>
+							</FlexBox>
+							<FlexBox justifyContent="Start">
+								<Text text="{globalProperties>KYSL}"/>
+							</FlexBox>
+						</CustomListItem>
+						<CustomListItem>
+							<FlexBox justifyContent="Start">
+								<Label text="{globalProperties>LGORT}"/>
+							</FlexBox>
+							<FlexBox justifyContent="Start">
+								<Label text="{globalProperties>CHARG}"/>
+							</FlexBox>
+						</CustomListItem>
+						<CustomListItem>
+							<FlexBox justifyContent="Start">
+								<Text text="{globalProperties>SOBKZ}"/>
+							</FlexBox>
+							<FlexBox justifyContent="Start">
+								<Text text="{path:'globalProperties>SONUM',formatter:'.formatter.deleteLeftZero'}"/>
+							</FlexBox>
+						</CustomListItem>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</Page>
+</mvc:View>

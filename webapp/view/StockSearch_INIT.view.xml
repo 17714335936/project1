@@ -1,0 +1,41 @@
+<mvc:View xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+	controllerName="project1.controller.StockSearch_INIT" xmlns="sap.m" xmlns:layout="sap.ui.layout">
+	<Page title="{i18n>title}" titleAlignment="Center" titleLevel="H3" showHeader="false">
+		<!--<SearchField value="{globalProperties>/LGNUM}" id="searchField" search="onPressSearch" placeholder="扫描输入发料仓库" width="100%"/>-->
+		<HBox height="10%">
+			<VBox width="100%" justifyContent="Center"></VBox>
+		</HBox>
+		<FlexBox renderType="Div">
+			<items>
+				<Text id="PDAID" textAlign="End" width="100%">
+					<layoutData>
+						<FlexItemData alignSelf="End" baseSize="100%"/>
+					</layoutData>
+				</Text>
+			</items>
+		</FlexBox>
+		<FlexBox renderType="Div">
+			<items>
+				<Text text="工厂:">
+					<layoutData>
+						<FlexItemData alignSelf="Center" baseSize="20%"/>
+					</layoutData>
+				</Text>
+				<Select forceSelection="false" items="{globalProperties>/T001W_TAB}" selectedKey="{globalProperties>/WERKS}" width="100%"
+					change="onSelectchange">
+					<core:Item key="{globalProperties>WERKS}" text="{globalProperties>WERKS}-{globalProperties>NAME1}"/>
+					<layoutData>
+						<FlexItemData alignSelf="End" baseSize="100%"/>
+					</layoutData>
+				</Select>
+			</items>
+		</FlexBox>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button text="确定" type="Accept" press="onClickSure"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</mvc:View>
